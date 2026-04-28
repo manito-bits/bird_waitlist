@@ -335,6 +335,10 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
             </select>
             <input type="text" name="distributor_other" id="distributorOther" data-i18n-placeholder="f_dist_other_ph" style="display:none;margin-top:8px;">
           </div>
+          <div class="field full" style="flex-direction:row;align-items:flex-start;gap:10px;">
+            <input type="checkbox" id="dsgvoConsent" name="consent" required style="width:auto;margin-top:3px;flex-shrink:0;accent-color:#0000DB;">
+            <label for="dsgvoConsent" style="font-size:12px;letter-spacing:0;text-transform:none;color:rgba(0,0,0,0.45);line-height:1.5;cursor:pointer;" data-i18n="f_consent"></label>
+          </div>
           <div class="form-submit">
             <button type="submit" class="submit-btn" data-i18n="f_submit"></button>
             <p class="form-note" data-i18n="f_note"></p>
@@ -436,7 +440,9 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     <div class="footer-divider"></div>
     <span class="footer-note" data-i18n="footer_access"></span>
     <div class="footer-divider"></div>
-    <span class="footer-note">Intern · Nicht zur Weitergabe</span>
+    <a href="/impressum.html" class="footer-note" style="text-decoration:none;color:rgba(0,0,0,0.25)">Impressum</a>
+    <div class="footer-divider"></div>
+    <a href="/datenschutz.html" class="footer-note" style="text-decoration:none;color:rgba(0,0,0,0.25)">Datenschutz</a>
   </footer>
 
 </div>
@@ -482,6 +488,7 @@ const i18n = {
     f_dist_other_ph:  'Welcher Distributor?',
     f_submit:         'Jetzt anmelden',
     f_note:           'Kein Spam. Keine Weitergabe. Nur BiRD.',
+    f_consent:        'Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html" target="_blank" style="color:#0000DB">Datenschutzerklärung</a> zu.',
     success_title:    'Du bist dabei.',
     success_body:     'Wir melden uns, sobald dein Zugang bereit ist. Bis dahin — mach Mukke.',
     stat_1:           'Einnahmen gehen verloren',
@@ -538,6 +545,7 @@ const i18n = {
     f_dist_other_ph:  'Which distributor?',
     f_submit:         'Sign up now',
     f_note:           'No spam. No sharing. Just BiRD.',
+    f_consent:        'I agree to the processing of my data in accordance with the <a href="/datenschutz.html" target="_blank" style="color:#0000DB">privacy policy</a>.',
     success_title:    "You're in.",
     success_body:     "We'll be in touch as soon as your access is ready. Until then — make music.",
     stat_1:           'Revenue lost to middlemen',
@@ -668,7 +676,7 @@ async function handleSubmit(e) {
     const res = await fetch('/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields }),
+      body: JSON.stringify({ fields, lang: currentLang }),
     });
 
     if (!res.ok) throw new Error(`Server error ${res.status}`);
