@@ -608,7 +608,14 @@ function toggleOtherDistributor(select) {
   const other = document.getElementById('distributorOther');
   const show = select.value === 'other';
   other.style.display = show ? 'block' : 'none';
-  other.required = show;
+  if (!show) {
+    other.required = false;
+    other.value = '';
+  } else {
+    other.required = true;
+    other.focus();
+    setTimeout(() => other.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  }
 }
 
 function toggleFaq(btn) {
@@ -649,9 +656,11 @@ async function handleSubmit(e) {
     'NACHNAME':         data.last_name,
     'E-MAIL':           data.email,
     'Artist Name':      data.artist_name,
+    'Label':            data.label || '',
     'Catalogue Size':   data.catalog_size,
     'GEMA Status':      data.gema,
-    'Distributor':      data.distributor === 'other' ? data.distributor_other : data.distributor,
+    'Distributor':      data.distributor,
+    'Other Distributor (if selected)': data.distributor === 'other' ? data.distributor_other : '',
     'Signup Date':      new Date().toISOString().split('T')[0],
   };
 
