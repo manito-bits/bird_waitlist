@@ -31,9 +31,9 @@ app.post('/api/waitlist', async (req, res) => {
     );
 
     if (!response.ok) {
-      const err = await response.text();
-      console.error('Airtable error:', err);
-      return res.status(response.status).json({ error: 'Airtable error' });
+      const err = await response.json().catch(() => ({}));
+      console.error('Airtable error:', JSON.stringify(err, null, 2));
+      return res.status(response.status).json({ error: 'Airtable error', details: err });
     }
 
     const data = await response.json();
