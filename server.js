@@ -16,40 +16,52 @@ function getMailer() {
   });
 }
 
+// ── Email signature (shared) ──
+const signature = `
+  <table cellpadding="0" cellspacing="0" style="width: 100%; max-width: 500px; border-collapse: collapse;">
+    <tr>
+      <td>
+        <img src="https://birdandcompany.de/email-signature.png" alt="Tristan Kurt — BiRD — hello@birdandcompany.de — birdandcompany.de" width="500" style="width: 100%; max-width: 500px; height: auto; display: block; border: 0;">
+      </td>
+    </tr>
+  </table>
+`;
+
 // ── Email templates ──
 const emailTemplates = {
   de: (name) => ({
     subject: 'Du bist dabei — BiRD',
     html: `
-      <div style="font-family: Helvetica, Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #1a1a1a;">
-        <div style="padding: 32px 0 24px; border-bottom: 1px solid #e0e0e0;">
-          <strong style="font-size: 18px; letter-spacing: 0.02em;">BiRD</strong>
+      <div style="font-family: Helvetica, Arial, sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; background: #ffffff;">
+
+        <!-- Header with logo on grey background -->
+        <div style="background: #E8E8E8; padding: 32px 36px; text-align: left;">
+          <img src="https://birdandcompany.de/email-logo.png" alt="BiRD" height="28" style="height: 28px; width: auto;">
         </div>
-        <div style="padding: 32px 0;">
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Hey ${name},</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Killer, dass du dich angemeldet hast.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Wir bauen gemeinsam etwas, das allen Artists ihre Rechte zur&uuml;ckgibt &mdash; und daf&uuml;r sorgt, dass dein Geld da landet, wo es hingeh&ouml;rt: bei dir.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Wir melden uns pers&ouml;nlich bei dir, sobald dein Zugang bereit ist.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin-top: 24px;">In der Zwischenzeit &mdash; <strong>mach Mukke.</strong></p>
-          <p style="font-size: 14px; line-height: 1.7; color: #999; margin-top: 32px;">Dein BiRD Team</p>
+
+        <!-- Blue accent bar -->
+        <div style="height: 3px; background: #0000DB;"></div>
+
+        <!-- Body -->
+        <div style="padding: 36px 36px 20px;">
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Killer, dass du dich angemeldet hast.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir bauen gemeinsam etwas, das allen Artists ihre Rechte zur&uuml;ckgibt &mdash; und daf&uuml;r sorgt, dass dein Geld da landet, wo es hingeh&ouml;rt: bei dir.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir melden uns pers&ouml;nlich bei dir, sobald dein Zugang bereit ist.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">In der Zwischenzeit &mdash; <strong>mach Mukke.</strong></p>
+          <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Dein BiRD Team</p>
         </div>
-        <div style="padding: 24px 0; border-top: 1px solid #e0e0e0;">
-          <table cellpadding="0" cellspacing="0" style="font-family: Helvetica, Arial, sans-serif;">
-            <tr>
-              <td style="padding-right: 20px; border-right: 2px solid #0000DB;">
-                <strong style="font-size: 14px; color: #000; letter-spacing: 0.03em;">BiRD</strong>
-              </td>
-              <td style="padding-left: 20px;">
-                <span style="font-size: 12px; color: #666;">Your System. Your Sound. Your Rights.</span><br>
-                <a href="https://birdandcompany.de" style="font-size: 12px; color: #0000DB; text-decoration: none;">birdandcompany.de</a>
-                <span style="font-size: 12px; color: #ccc;"> &middot; </span>
-                <a href="mailto:hello@birdandcompany.de" style="font-size: 12px; color: #0000DB; text-decoration: none;">hello@birdandcompany.de</a>
-              </td>
-            </tr>
-          </table>
+
+        <!-- Signature -->
+        <div style="padding: 0 36px 24px;">
+          ${signature}
         </div>
-        <div style="padding: 16px 0 0; font-size: 10px; color: #bbb; line-height: 1.5;">
-          Diese E-Mail wurde automatisch versendet. <a href="https://birdandcompany.de/datenschutz.html" style="color:#999;text-decoration:underline;">Datenschutz</a> &middot; <a href="https://birdandcompany.de/impressum.html" style="color:#999;text-decoration:underline;">Impressum</a>
+
+        <!-- Footer -->
+        <div style="background: #E8E8E8; padding: 16px 36px; font-size: 10px; color: #999; line-height: 1.6;">
+          Diese E-Mail wurde automatisch versendet.
+          <a href="https://birdandcompany.de/datenschutz.html" style="color: #666; text-decoration: underline;">Datenschutz</a> &middot;
+          <a href="https://birdandcompany.de/impressum.html" style="color: #666; text-decoration: underline;">Impressum</a>
         </div>
       </div>
     `,
@@ -57,35 +69,36 @@ const emailTemplates = {
   en: (name) => ({
     subject: "You're in — BiRD",
     html: `
-      <div style="font-family: Helvetica, Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #1a1a1a;">
-        <div style="padding: 32px 0 24px; border-bottom: 1px solid #e0e0e0;">
-          <strong style="font-size: 18px; letter-spacing: 0.02em;">BiRD</strong>
+      <div style="font-family: Helvetica, Arial, sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; background: #ffffff;">
+
+        <!-- Header with logo on grey background -->
+        <div style="background: #E8E8E8; padding: 32px 36px; text-align: left;">
+          <img src="https://birdandcompany.de/email-logo.png" alt="BiRD" height="28" style="height: 28px; width: auto;">
         </div>
-        <div style="padding: 32px 0;">
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Hey ${name},</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">Amazing that you signed up.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">We're building something that gives every artist their rights back &mdash; and makes sure your money ends up where it belongs: with you.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333;">We'll reach out personally once your access is ready.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin-top: 24px;">Until then &mdash; <strong>make music.</strong></p>
-          <p style="font-size: 14px; line-height: 1.7; color: #999; margin-top: 32px;">Your BiRD Team</p>
+
+        <!-- Blue accent bar -->
+        <div style="height: 3px; background: #0000DB;"></div>
+
+        <!-- Body -->
+        <div style="padding: 36px 36px 20px;">
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Amazing that you signed up.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We're building something that gives every artist their rights back &mdash; and makes sure your money ends up where it belongs: with you.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We'll reach out personally once your access is ready.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">Until then &mdash; <strong>make music.</strong></p>
+          <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Your BiRD Team</p>
         </div>
-        <div style="padding: 24px 0; border-top: 1px solid #e0e0e0;">
-          <table cellpadding="0" cellspacing="0" style="font-family: Helvetica, Arial, sans-serif;">
-            <tr>
-              <td style="padding-right: 20px; border-right: 2px solid #0000DB;">
-                <strong style="font-size: 14px; color: #000; letter-spacing: 0.03em;">BiRD</strong>
-              </td>
-              <td style="padding-left: 20px;">
-                <span style="font-size: 12px; color: #666;">Your System. Your Sound. Your Rights.</span><br>
-                <a href="https://birdandcompany.de" style="font-size: 12px; color: #0000DB; text-decoration: none;">birdandcompany.de</a>
-                <span style="font-size: 12px; color: #ccc;"> &middot; </span>
-                <a href="mailto:hello@birdandcompany.de" style="font-size: 12px; color: #0000DB; text-decoration: none;">hello@birdandcompany.de</a>
-              </td>
-            </tr>
-          </table>
+
+        <!-- Signature -->
+        <div style="padding: 0 36px 24px;">
+          ${signature}
         </div>
-        <div style="padding: 16px 0 0; font-size: 10px; color: #bbb; line-height: 1.5;">
-          This email was sent automatically. <a href="https://birdandcompany.de/datenschutz.html" style="color:#999;text-decoration:underline;">Privacy</a> &middot; <a href="https://birdandcompany.de/impressum.html" style="color:#999;text-decoration:underline;">Imprint</a>
+
+        <!-- Footer -->
+        <div style="background: #E8E8E8; padding: 16px 36px; font-size: 10px; color: #999; line-height: 1.6;">
+          This email was sent automatically.
+          <a href="https://birdandcompany.de/datenschutz.html" style="color: #666; text-decoration: underline;">Privacy</a> &middot;
+          <a href="https://birdandcompany.de/impressum.html" style="color: #666; text-decoration: underline;">Imprint</a>
         </div>
       </div>
     `,
