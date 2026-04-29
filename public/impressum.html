@@ -3,90 +3,658 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum — BiRD</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>BiRD — Kein Label. Kein Stress.</title>
 <style>
-@font-face { font-family: 'RocGrotesk'; src: url('fonts/RocGrotesk-Regular.otf') format('opentype'); font-weight: 400; }
+@font-face {
+  font-family: 'StapelExpanded';
+  src: url('fonts/StapelExpanded-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+}
+@font-face {
+  font-family: 'RocGrotesk';
+  src: url('fonts/RocGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #E8E8E8; color: #1a1a1a; font-family: 'RocGrotesk', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.7; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+
+:root {
+  --blue: #0000DB;
+  --black: #000;
+  --white: #fff;
+  --grey: #E8E8E8;
+  --brown: #60463B;
+}
+
+html, body {
+  min-height: 100%;
+  background: var(--grey);
+  color: var(--black);
+  font-family: 'RocGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Nav ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+/* =========================================================
+   LOGO SIZE — change the height value below to resize logo
+   ========================================================= */
 nav svg { height: 32px; width: auto; }
-nav a.back { text-decoration: none; color: rgba(0,0,0,0.4); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.15s; }
-nav a.back:hover { color: #000; }
-.content { max-width: 680px; padding: 60px 40px 80px; }
-h1 { font-size: 28px; font-weight: 400; margin-bottom: 32px; }
-h2 { font-size: 16px; font-weight: 400; margin-top: 32px; margin-bottom: 12px; color: #000; }
-p { font-size: 14px; line-height: 1.7; color: rgba(0,0,0,0.6); margin-bottom: 8px; }
-.info { background: #fff; border-left: 2px solid #000; padding: 20px 24px; margin: 16px 0 24px; }
-.info p { margin-bottom: 4px; }
-.info a { color: #0000DB; text-decoration: none; }
-.info a:hover { text-decoration: underline; }
-.divider { border: none; height: 1px; background: rgba(0,0,0,0.08); margin: 32px 0; }
-footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); font-size: 11px; color: rgba(0,0,0,0.25); display: flex; gap: 12px; }
-footer a { color: rgba(0,0,0,0.25); text-decoration: none; }
-footer a:hover { color: #000; }
-@media (max-width: 600px) { nav, .content, footer { padding-left: 20px; padding-right: 20px; } }
+nav .nav-right { display: flex; align-items: center; gap: 20px; }
+nav .nav-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.35); }
+
+/* ── Language toggle ── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+.lang-btn {
+  font-family: 'RocGrotesk', Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: rgba(0,0,0,0.35);
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+.lang-btn.active {
+  background: var(--blue);
+  color: var(--white);
+}
+.lang-btn:not(.active):hover { background: rgba(0,0,0,0.05); color: var(--black); }
+
+/* ── Hero ── */
+.hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 80px 40px 60px; max-width: 860px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; }
+.headline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(44px, 7vw, 88px); line-height: 0.9; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 32px; }
+.headline .hl-blue { color: var(--blue); white-space: nowrap; }
+.body-text { font-size: 17px; line-height: 1.65; color: rgba(0,0,0,0.55); max-width: 560px; margin-bottom: 48px; }
+.body-text strong { color: var(--black); font-weight: 400; }
+
+/* ── CTA button ── */
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: 'RocGrotesk', Arial, sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border: none; padding: 14px 28px; cursor: pointer; transition: background 0.15s; border-radius: 0; align-self: flex-start; }
+.cta-btn:hover { background: #0000AA; }
+.cta-btn .arrow { display: inline-block; transition: transform 0.25s; }
+.cta-btn.open .arrow { transform: rotate(180deg); }
+
+/* ── Form ── */
+.form-wrap { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
+.form-wrap.open { max-height: 900px; }
+.form-inner { border-top: 1px solid rgba(0,0,0,0.1); margin-top: 28px; padding-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; max-width: 820px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.45); }
+.field .optional { font-size: 10px; letter-spacing: 0.06em; color: rgba(0,0,0,0.25); text-transform: none; margin-left: 4px; }
+.field input, .field select { background: var(--white); border: 1.5px solid rgba(0,0,0,0.2); color: var(--black); font-family: 'RocGrotesk', Arial, sans-serif; font-size: 14px; padding: 11px 14px; outline: none; border-radius: 0; transition: border-color 0.15s; appearance: none; -webkit-appearance: none; width: 100%; }
+.field input::placeholder { color: rgba(0,0,0,0.25); }
+.field input:focus, .field select:focus { border-color: var(--blue); }
+.field select { background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(0,0,0,0.35)' stroke-width='1.5'/%3E%3C/svg%3E"); background-color: var(--white); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+.field select option { background: #fff; color: #000; }
+.form-submit { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 8px; }
+.submit-btn { background: var(--blue); color: var(--white); font-family: 'RocGrotesk', Arial, sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border: none; padding: 13px 28px; cursor: pointer; border-radius: 0; transition: background 0.15s; flex-shrink: 0; }
+.submit-btn:hover { background: #0000AA; }
+.form-note { font-size: 11px; color: rgba(0,0,0,0.3); line-height: 1.5; }
+.success-msg { display: none; padding: 24px 0 0; max-width: 480px; }
+.success-msg.visible { display: block; }
+.success-headline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 10px; }
+.success-body { font-size: 14px; color: rgba(0,0,0,0.5); line-height: 1.6; }
+
+/* ── Stats strip ── */
+.stats { display: flex; border-top: 1px solid rgba(0,0,0,0.08); border-bottom: 1px solid rgba(0,0,0,0.08); margin: 0 40px; }
+.stat { flex: 1; padding: 20px 16px; border-right: 1px solid rgba(0,0,0,0.08); }
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--black); line-height: 1; margin-bottom: 4px; }
+.stat-num .blue { color: var(--blue); }
+.stat-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,0,0,0.35); }
+
+/* ── Features ── */
+.features { background: var(--blue); color: var(--white); padding: 80px 40px; }
+.features-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; margin-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 48px; }
+.features-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+.features-headline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 68px); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.02em; flex: 1; max-width: 600px; }
+.features-intro { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.45); max-width: 340px; flex-shrink: 0; padding-top: 8px; }
+.features-intro strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+.features-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.1); border-left: 1px solid rgba(255,255,255,0.1); }
+.feature-card { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s; }
+.feature-card:hover { background: rgba(0,0,0,0.12); }
+.feature-num { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); margin-bottom: 24px; display: block; }
+.feature-title { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 14px; color: var(--white); }
+.feature-title .accent { color: rgba(255,255,255,0.5); }
+.feature-desc { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,0.4); }
+.features-footer { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.features-tagline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(18px, 2.5vw, 28px); text-transform: uppercase; letter-spacing: -0.01em; line-height: 1; }
+.features-tagline .hl { color: var(--white); }
+.features-tagline span:not(.hl) { color: rgba(255,255,255,0.35); }
+.features-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--white); color: var(--blue); font-family: 'RocGrotesk', Arial, sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border: none; padding: 14px 28px; cursor: pointer; transition: background 0.15s; border-radius: 0; flex-shrink: 0; text-decoration: none; }
+.features-cta:hover { background: var(--grey); }
+
+/* ── FAQ ── */
+.faq { background: var(--grey); padding: 80px 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+.faq-top { margin-bottom: 56px; }
+.faq-headline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 64px); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.92; }
+.faq-list { border-top: 1px solid rgba(0,0,0,0.1); }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: none; border: none; padding: 28px 0; cursor: pointer; text-align: left; font-family: 'RocGrotesk', Arial, sans-serif; font-size: 16px; color: var(--black); line-height: 1.4; transition: color 0.15s; }
+.faq-q:hover { color: var(--blue); }
+.faq-q:hover .faq-icon { color: var(--blue); }
+.faq-icon { flex-shrink: 0; color: rgba(0,0,0,0.3); transition: transform 0.25s, color 0.15s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--blue); }
+.faq-item.open .faq-q { color: var(--blue); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p { font-size: 14px; line-height: 1.7; color: rgba(0,0,0,0.5); padding-bottom: 28px; max-width: 680px; }
+
+/* ── YSYS ── */
+.ysys { padding: 48px 40px; border-top: 1px solid rgba(0,0,0,0.08); background: var(--grey); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.ysys-tagline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(18px, 2.5vw, 28px); text-transform: uppercase; letter-spacing: -0.01em; line-height: 1; color: rgba(0,0,0,0.15); }
+.ysys-tagline .hl { color: var(--black); }
+.ysys-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--grey); color: var(--blue); border: 1.5px solid var(--blue); font-family: 'RocGrotesk', Arial, sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 28px; cursor: pointer; border-radius: 0; flex-shrink: 0; transition: background 0.15s, color 0.15s; }
+.ysys-btn:hover { background: var(--blue); color: var(--white); }
+
+/* ── Footer ── */
+footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.footer-note { font-size: 11px; color: rgba(0,0,0,0.25); letter-spacing: 0.04em; }
+.footer-divider { width: 1px; height: 12px; background: rgba(0,0,0,0.1); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-header { flex-direction: column; gap: 24px; }
+  .features-intro { max-width: 100%; }
+}
+@media (max-width: 600px) {
+  nav, .hero, footer, .features, .faq, .ysys { padding-left: 20px; padding-right: 20px; }
+  .stats { margin: 0 20px; }
+  .form-inner { grid-template-columns: 1fr; }
+  .field.full { grid-column: 1; }
+  .form-submit { flex-direction: column; align-items: flex-start; }
+  .stat-num { font-size: 22px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .features-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .ysys { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .ysys-tagline { font-size: 16px; }
+  .faq-q { font-size: 14px; padding: 22px 0; }
+}
 </style>
 </head>
 <body>
-<nav>
-  <a href="/">
-    <svg viewBox="0 0 471.59 92.22" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="color:#000;display:block">
-      <rect x="41" width="42.09" height="92.22"/>
-      <rect x="24.29" width="14.17" height="92.22"/>
-      <rect x="9.85" width="11.9" height="92.22"/>
-      <rect width="7.31" height="92.22"/>
-      <path d="M192.99,52.16c3.78,3.61,5.68,8.39,5.68,14.36,0,8.9-2.76,15.4-8.28,19.5-5.52,4.1-13.98,6.14-25.38,6.14h-78.27V0h75.73c5.88,0,10.89.44,15.03,1.34,4.14.89,7.55,2.34,10.22,4.34,2.67,2,4.61,4.54,5.81,7.61,1.2,3.07,1.8,6.83,1.8,11.29,0,5.79-1.69,10.15-5.08,13.09-3.38,2.94-7.92,4.94-13.62,6.01v1.47c7.12,1.07,12.58,3.41,16.36,7.01ZM126.95,36.86h20.84c2.85,0,4.96-.47,6.34-1.4,1.38-.93,2.07-2.56,2.07-4.87,0-2.49-.62-4.16-1.87-5.01-1.25-.85-3.56-1.27-6.95-1.27h-20.44v12.56ZM126.95,67.85h23.24c3.12,0,5.45-.51,7.01-1.53,1.56-1.02,2.34-2.83,2.34-5.41s-.71-4.18-2.14-5.08c-1.42-.89-3.92-1.33-7.48-1.33h-22.97v13.36Z"/>
-      <path d="M200.31,92.16v-58.22h38.32v58.22h-38.32Z"/>
-      <path d="M200.31,28.49V0h38.32v28.49h-38.32Z"/>
-      <path d="M284.84,51.42h12.56c4.1,0,7.3-.98,9.62-2.94,2.32-1.96,3.47-5.08,3.47-9.35,0-4.01-1.07-6.9-3.2-8.68-2.14-1.78-5.48-2.67-10.02-2.67h-17.1v64.38h-36.89V0h66.67c14.25,0,24.66,2.6,31.25,7.81,6.59,5.21,9.88,13.78,9.88,25.71,0,3.03-.33,6.06-1,9.08-.67,3.03-1.8,5.83-3.41,8.41-1.6,2.58-3.7,4.92-6.28,7.01-2.58,2.09-5.79,3.76-9.62,5.01l24.58,29.12h-46.88l-23.64-40.74Z"/>
-      <path d="M415.36,0c9.62,0,17.96.6,25.04,1.8,7.08,1.2,12.91,3.47,17.5,6.81s8.01,8.01,10.28,14.02c2.27,6.01,3.41,13.87,3.41,23.57,0,8.99-1.05,16.45-3.14,22.37-2.09,5.92-5.41,10.62-9.95,14.09-4.54,3.47-10.35,5.92-17.43,7.35-7.08,1.42-15.65,2.14-25.71,2.14h-60.37V0h60.37ZM418.97,65.45c3.12-.45,5.59-1.38,7.41-2.81,1.82-1.42,3.09-3.43,3.81-6.01.71-2.58,1.07-6.06,1.07-10.42,0-4.72-.38-8.41-1.14-11.09-.76-2.67-2.05-4.67-3.87-6.01-1.83-1.34-4.27-2.18-7.35-2.54-3.07-.36-6.97-.53-11.69-.53h-12.02v40.07h12.02c4.72,0,8.64-.22,11.75-.67Z"/>
+<div class="page">
+
+  <!-- Nav -->
+  <nav>
+    <svg viewBox="195 155 265 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="color:#000;display:block">
+      <!-- =====================================================
+           LOGO SIZE — edit height on the <svg> tag above
+           ===================================================== -->
+      <path d="M225.96,200.9v.09c0,2.52.58,4.32,1.76,5.4,1.17,1.08,2.98,1.62,5.44,1.62,3.78,0,5.88-1.26,6.3-3.78h25.02c-.06,3.54-.75,6.5-2.07,8.86-1.32,2.37-3.28,4.27-5.89,5.71-2.61,1.44-5.86,2.46-9.76,3.06-3.9.6-8.49.9-13.77.9-5.64,0-10.5-.39-14.58-1.17-4.08-.78-7.44-2.08-10.08-3.92-2.64-1.83-4.59-4.24-5.85-7.24-1.26-3-1.89-6.75-1.89-11.25s.63-8.47,1.89-11.56c1.26-3.09,3.21-5.56,5.85-7.42,2.64-1.86,6-3.18,10.08-3.96,4.08-.78,8.94-1.17,14.58-1.17,5.28,0,9.88.35,13.81,1.04,3.93.69,7.2,1.81,9.81,3.37,2.61,1.56,4.57,3.65,5.89,6.25,1.32,2.61,1.98,5.8,1.98,9.58v5.58h-38.52ZM239.46,196.58c0-2.52-.57-4.29-1.71-5.31-1.14-1.02-2.79-1.53-4.95-1.53s-3.73.5-4.9,1.48c-1.17.99-1.81,2.54-1.94,4.63v.72h13.5Z"/>
+      <path d="M307.53,176.24c4.11.78,7.5,2.1,10.17,3.96s4.65,4.33,5.94,7.42,1.94,6.94,1.94,11.56-.65,8.25-1.94,11.25-3.27,5.41-5.94,7.24-6.06,3.13-10.17,3.92c-4.11.78-9.01,1.17-14.71,1.17s-10.53-.39-14.67-1.17c-4.14-.78-7.53-2.08-10.17-3.92-2.64-1.83-4.6-4.24-5.9-7.24s-1.94-6.75-1.94-11.25.65-8.47,1.94-11.56,3.25-5.56,5.9-7.42c2.64-1.86,6.03-3.18,10.17-3.96,4.14-.78,9.03-1.17,14.67-1.17s10.6.39,14.71,1.17ZM298.49,205.58c1.08-1.38,1.62-3.51,1.62-6.39,0-3.06-.54-5.32-1.62-6.79-1.08-1.47-2.97-2.2-5.67-2.2s-4.67.72-5.71,2.16-1.58,3.72-1.58,6.84c0,2.88.53,5.01,1.58,6.39s2.96,2.07,5.71,2.07,4.59-.69,5.67-2.07Z"/>
+      <path d="M328.72,221.41v-29.69h-9v-15.3h9v-17.1h25.38v17.1h12.06v15.3h-12.06v29.77l-25.38-.07Z"/>
+      <path d="M408.76,176.24c4.11.78,7.5,2.1,10.17,3.96s4.65,4.33,5.94,7.42,1.93,6.94,1.93,11.56-.64,8.25-1.93,11.25-3.27,5.41-5.94,7.24-6.06,3.13-10.17,3.92c-4.11.78-9.01,1.17-14.71,1.17s-10.53-.39-14.67-1.17c-4.14-.78-7.53-2.08-10.17-3.92-2.64-1.83-4.6-4.24-5.89-7.24s-1.94-6.75-1.94-11.25.65-8.47,1.94-11.56,3.25-5.56,5.89-7.42c2.64-1.86,6.03-3.18,10.17-3.96,4.14-.78,9.03-1.17,14.67-1.17s10.6.39,14.71,1.17ZM399.71,205.58c1.08-1.38,1.62-3.51,1.62-6.39,0-3.06-.54-5.32-1.62-6.79-1.08-1.47-2.97-2.2-5.67-2.2s-4.67.72-5.71,2.16-1.58,3.72-1.58,6.84c0,2.88.53,5.01,1.58,6.39s2.95,2.07,5.71,2.07,4.59-.69,5.67-2.07Z"/>
     </svg>
-  </a>
-  <a href="/" class="back">&larr; Zur&uuml;ck</a>
-</nav>
+    <div class="nav-right">
+      <span class="nav-label" data-i18n="nav_label"></span>
+      <div class="lang-toggle">
+        <button class="lang-btn" id="btnDE" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
 
-<div class="content">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow"></div>
+    <h1 class="headline">
+      <span data-i18n="headline_1"></span><br>
+      <span class="hl-blue" data-i18n="headline_2"></span>
+    </h1>
+    <p class="body-text" data-i18n="body_text"></p>
+    <div>
+      <button class="cta-btn" id="ctaBtn" onclick="toggleForm()">
+        <span data-i18n="cta"></span>
+        <svg class="arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+      </button>
+      <div class="form-wrap" id="formWrap">
+        <form class="form-inner" id="waitlistForm" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label data-i18n="f_firstname"></label>
+            <input type="text" name="first_name" data-i18n-placeholder="f_firstname_ph" required>
+          </div>
+          <div class="field">
+            <label data-i18n="f_lastname"></label>
+            <input type="text" name="last_name" data-i18n-placeholder="f_lastname_ph" required>
+          </div>
+          <div class="field">
+            <label data-i18n="f_email"></label>
+            <input type="email" name="email" placeholder="du@example.com" required>
+          </div>
+          <div class="field">
+            <label data-i18n="f_artist"></label>
+            <input type="text" name="artist_name" data-i18n-placeholder="f_artist_ph" required>
+          </div>
+          <div class="field">
+            <label data-i18n="f_genre"></label>
+            <select name="genre" required>
+              <option value="" disabled selected data-i18n="f_genre_ph"></option>
+              <option value="hiphop">Hip-Hop / Rap</option>
+              <option value="rnb">R&B / Soul</option>
+              <option value="electronic">Electronic / Club</option>
+              <option value="pop">Pop</option>
+              <option value="rock">Rock / Indie</option>
+              <option value="jazz">Jazz / Neo-Soul</option>
+              <option value="classical" data-i18n="f_genre_classical"></option>
+              <option value="folk">Folk / Singer-Songwriter</option>
+              <option value="other" data-i18n="f_other"></option>
+            </select>
+          </div>
+          <div class="field">
+            <label>
+              <span data-i18n="f_label"></span>
+              <span class="optional" data-i18n="f_optional"></span>
+            </label>
+            <input type="text" name="label" data-i18n-placeholder="f_label_ph">
+          </div>
+          <div class="field">
+            <label data-i18n="f_catalog"></label>
+            <select name="catalog_size" required>
+              <option value="" disabled selected data-i18n="f_catalog_ph"></option>
+              <option value="1-5 tracks">1 – 5 Tracks</option>
+              <option value="6-20 tracks">6 – 20 Tracks</option>
+              <option value="21-50 tracks">21 – 50 Tracks</option>
+              <option value="51-100 tracks">51 – 100 Tracks</option>
+              <option value="more than 100 tracks" data-i18n="f_catalog_more"></option>
+            </select>
+          </div>
+          <div class="field">
+            <label data-i18n="f_gema"></label>
+            <select name="gema" required>
+              <option value="" disabled selected data-i18n="f_gema_ph"></option>
+              <option value="angemeldet" data-i18n="f_gema_yes"></option>
+              <option value="nicht angemeldet" data-i18n="f_gema_no"></option>
+              <option value="in process" data-i18n="f_gema_pending"></option>
+            </select>
+          </div>
+          <div class="field full">
+            <label data-i18n="f_distributor"></label>
+            <select name="distributor" required onchange="toggleOtherDistributor(this)">
+              <option value="" disabled selected data-i18n="f_distributor_ph"></option>
+              <option value="distrokid">DistroKid</option>
+              <option value="tune core">TuneCore</option>
+              <option value="cdbaby">CD Baby</option>
+              <option value="awal">AWAL</option>
+              <option value="believe">Believe</option>
+              <option value="iMusician">iMusician</option>
+              <option value="Amuse">Amuse</option>
+              <option value="soundcloud">SoundCloud</option>
+              <option value="own label" data-i18n="f_dist_label"></option>
+              <option value="none yet" data-i18n="f_dist_none"></option>
+              <option value="other" data-i18n="f_other"></option>
+            </select>
+            <input type="text" name="distributor_other" id="distributorOther" data-i18n-placeholder="f_dist_other_ph" style="display:none;margin-top:8px;">
+          </div>
+          <div class="field full" style="flex-direction:row;align-items:flex-start;gap:10px;">
+            <input type="checkbox" id="dsgvoConsent" name="consent" required style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:#0000DB;appearance:auto;-webkit-appearance:checkbox;cursor:pointer;">
+            <label for="dsgvoConsent" style="font-size:12px;letter-spacing:0;text-transform:none;color:rgba(0,0,0,0.45);line-height:1.5;cursor:pointer;" data-i18n="f_consent"></label>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="submit-btn" data-i18n="f_submit"></button>
+            <p class="form-note" data-i18n="f_note"></p>
+          </div>
+        </form>
+        <div class="success-msg" id="successMsg">
+          <div class="success-headline" data-i18n="success_title"></div>
+          <p class="success-body" data-i18n="success_body"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h1>Impressum</h1>
+  <!-- Stats strip -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num"><span class="blue">&gt;50%</span></div>
+      <div class="stat-label" data-i18n="stat_1"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3–4</div>
+      <div class="stat-label" data-i18n="stat_2"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label" data-i18n="stat_3"></div>
+    </div>
+  </div>
 
-<p><strong>Angaben gem&auml;&szlig; &sect; 5 DDG</strong></p>
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq-top">
+      <h2 class="faq-headline" data-i18n="faq_title"></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q1"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a1"></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q2"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a2"></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q3"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a3"></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q4"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a4"></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q5"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a5"></p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq_q6"></span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="faq-a"><p data-i18n="faq_a6"></p></div>
+      </div>
+    </div>
+  </section>
 
-<div class="info">
-  <p><strong>BiRD &amp; Company</strong></p>
-  <p>Tristan Kurt</p>
-  <p>Corinthstra&szlig;e 1</p>
-  <p>33613 Bielefeld</p>
-  <p>Deutschland</p>
-  <p style="margin-top:12px"><strong>Kontakt:</strong></p>
-  <p>Telefon: <a href="tel:+4915203465293">0152 03465293</a></p>
-  <p>E-Mail: <a href="mailto:hello@birdandcompany.de">hello@birdandcompany.de</a></p>
+  <!-- YSYS -->
+  <div class="ysys">
+    <div class="ysys-tagline">
+      <span class="hl">Your System.</span>&nbsp;
+      <span class="hl">Your Sound.</span>&nbsp;
+      <span>Your Rights.</span>
+    </div>
+    <button class="ysys-btn" onclick="document.getElementById('ctaBtn').scrollIntoView({behavior:'smooth'}); setTimeout(toggleForm, 400);">
+      <span data-i18n="cta"></span>
+      <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+        <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.8"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-note">© 2026 BiRD</span>
+    <div class="footer-divider"></div>
+    <span class="footer-note" data-i18n="footer_access"></span>
+    <div class="footer-divider"></div>
+    <span class="footer-note">Intern · Nicht zur Weitergabe</span>
+  </footer>
+
 </div>
 
-<hr class="divider">
+<script>
+// ─────────────────────────────────────────────
+// TRANSLATIONS
+// ─────────────────────────────────────────────
+const i18n = {
+  de: {
+    nav_label:        'Früher Zugang',
+    eyebrow:          'Dein Geld. Dein Katalog. Dein Tool.',
+    headline_1:       'Kein Label.',
+    headline_2:       'Kein Stress.',
+    body_text:        'Musikschaffende verlieren im Schnitt <strong>über 50% ihrer Einnahmen</strong> an Zwischenmänner — für Arbeit, die heute Software erledigen kann. BiRD liest deine Abrechnungen, prüft sie, erklärt sie — und übernimmt die Verwaltung. <strong>Du behältst deine Rechte.</strong>',
+    cta:              'Frühen Zugang sichern',
+    f_firstname:      'Vorname',
+    f_firstname_ph:   'Vorname',
+    f_lastname:       'Nachname',
+    f_lastname_ph:    'Nachname',
+    f_email:          'E-Mail',
+    f_artist:         'Künstlername',
+    f_artist_ph:      'Dein Künstlername',
+    f_genre:          'Genre',
+    f_genre_ph:       'Genre wählen',
+    f_genre_classical:'Klassik / Zeitgenössisch',
+    f_other:          'Anderes',
+    f_label:          'Label',
+    f_optional:       '(optional)',
+    f_label_ph:       'Labelname, falls vorhanden',
+    f_catalog:        'Größe deines Katalogs',
+    f_catalog_ph:     'Anzahl Tracks',
+    f_catalog_more:   'Mehr als 100',
+    f_gema:           'GEMA-Mitglied?',
+    f_gema_ph:        'Dein Status',
+    f_gema_yes:       'Ja, ich bin angemeldet',
+    f_gema_no:        'Nein, noch nicht',
+    f_gema_pending:   'In Bearbeitung',
+    f_distributor:    'Dein Distributor',
+    f_distributor_ph: 'Distributor wählen',
+    f_dist_label:     'Über mein Label',
+    f_dist_none:      'Noch keiner',
+    f_dist_other_ph:  'Welcher Distributor?',
+    f_submit:         'Jetzt anmelden',
+    f_note:           'Kein Spam. Keine Weitergabe. Nur BiRD.',
+    f_consent:        'Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html" target="_blank" style="color:#0000DB">Datenschutzerklärung</a> zu.',
+    success_title:    'Du bist dabei.',
+    success_body:     'Wir melden uns, sobald dein Zugang bereit ist. Bis dahin — mach Mukke.',
+    stat_1:           'Einnahmen gehen verloren',
+    stat_2:           'Intermediäre pro Auszahlung',
+    stat_3:           'Label. Kein Stress.',
+    faq_title:        'Häufige\nFragen.',
+    faq_q1:           'Was macht BiRD genau mit meinen Abrechnungen?',
+    faq_a1:           'BiRD liest deine Abrechnungen von der GEMA, deinem Distributor und weiteren Quellen — und gleicht jede Zeile mit deinem Katalog ab. Du siehst genau, woher jeder Euro kommt, ob die Beträge stimmen und was noch aussteht. Keine Tabellen, kein Kopffick.',
+    faq_q2:           'Muss ich Rechte abgeben, um BiRD zu nutzen?',
+    faq_a2:           'Niemals. BiRD handelt ausschließlich auf Basis einer jederzeit widerruflichen Vollmacht — du autorisierst nur die Aktionen die du auch wirklich willst. Zahlungsflüsse laufen weiterhin direkt zwischen den externen Stellen (GEMA, DSPs, Distributoren) und dir. BiRD ist das Tool in der Mitte, keine Vertragspartei.',
+    faq_q3:           'Warum ist es wichtig bei der GEMA angemeldet zu sein?',
+    faq_a3:           'Die Mitgliedschaft bei PROs (z.B. GEMA) eröffnet in den meisten Fällen die Rechteverwertung von Tantiemen, die sonst nicht eingezogen würden — oder beim Verlag landen. BiRD kann dir bei der Anmeldung helfen, übernimmt auch danach die Werkanmeldung sowie das Tracking für dich, wofür Verlage sonst 10–30 % berechnen.',
+    faq_q4:           'Ist der Early-Access kostenlos?',
+    faq_a4:           'Ja. Der Early-Access ist kostenlos, während wir das Produkt gemeinsam mit den ersten Künstlern aufbauen und verfeinern. Die Preise werden vor dem öffentlichen Launch bekanntgegeben — Early-Access-Mitglieder erfahren es zuerst und erhalten Vorzugskonditionen.',
+    faq_q5:           'Welche Distributoren unterstützt ihr?',
+    faq_a5:           'Für uns ist es super interessant herauszufinden, welche Distributoren ihr nutzt, damit wir zum Launch das breitmöglichste Spektrum anbieten können. Wir integrieren auch Label-Distributionspipelines für bereits unter Vertrag stehende Künstler. Wenn deiner nicht dabei ist, sag es uns bei der Anmeldung — wir priorisieren nach Nachfrage.',
+    faq_q6:           'Was passiert nach der Anmeldung?',
+    faq_a6:           'Du bekommst sofort eine Bestätigung. Wir melden uns persönlich, um dich als Teil des ersten Cohorts einzuführen — ein paar von euch laden wir zu einem Interview ein und halten dich darüber hinaus mit E-Mails über die Entwicklung auf dem Laufenden.',
+    footer_access:    'Früher Zugang · April 2026',
+  },
+  en: {
+    nav_label:        'Early Access',
+    eyebrow:          'Your Money. Your Catalogue. Your Tool.',
+    headline_1:       'No Label.',
+    headline_2:       'No Stress.',
+    body_text:        'Musicians lose on average <strong>over 50% of their earnings</strong> to middlemen — for work that software can handle today. BiRD reads your statements, checks them, explains them — and takes over the admin. <strong>You keep your rights.</strong>',
+    cta:              'Secure Early Access',
+    f_firstname:      'First Name',
+    f_firstname_ph:   'First Name',
+    f_lastname:       'Last Name',
+    f_lastname_ph:    'Last Name',
+    f_email:          'E-Mail',
+    f_artist:         'Artist Name',
+    f_artist_ph:      'Your Artist Name',
+    f_genre:          'Genre',
+    f_genre_ph:       'Select genre',
+    f_genre_classical:'Classical / Contemporary',
+    f_other:          'Other',
+    f_label:          'Label',
+    f_optional:       '(optional)',
+    f_label_ph:       'Label name, if applicable',
+    f_catalog:        'Catalogue Size',
+    f_catalog_ph:     'Number of tracks',
+    f_catalog_more:   'More than 100',
+    f_gema:           'GEMA Member?',
+    f_gema_ph:        'Your status',
+    f_gema_yes:       'Yes, registered',
+    f_gema_no:        'No, not yet',
+    f_gema_pending:   'In progress',
+    f_distributor:    'Your Distributor',
+    f_distributor_ph: 'Select distributor',
+    f_dist_label:     'Via my label',
+    f_dist_none:      'None yet',
+    f_dist_other_ph:  'Which distributor?',
+    f_submit:         'Sign up now',
+    f_note:           'No spam. No sharing. Just BiRD.',
+    f_consent:        'I agree to the processing of my data in accordance with the <a href="/datenschutz.html" target="_blank" style="color:#0000DB">privacy policy</a>.',
+    success_title:    "You're in.",
+    success_body:     "We'll be in touch as soon as your access is ready. Until then — make music.",
+    stat_1:           'Revenue lost to middlemen',
+    stat_2:           'Intermediaries per payout',
+    stat_3:           'Label. No Stress.',
+    faq_title:        'Common\nQuestions.',
+    faq_q1:           'What does BiRD actually do with my statements?',
+    faq_a1:           'BiRD reads your royalty statements from GEMA, your distributor, and other sources — and matches every line against your catalogue. You see exactly where each euro comes from, whether the amounts are correct, and what\'s still outstanding. No spreadsheets, no bullshit.',
+    faq_q2:           'Do I have to give up any rights to use BiRD?',
+    faq_a2:           'Never. BiRD acts exclusively on the basis of a revocable power of attorney — you only authorise the actions you actually want. All payments flow directly between external parties (GEMA, DSPs, distributors) and you. BiRD is the tool in the middle, not a party to any deal.',
+    faq_q3:           'Why does it matter to be registered with a PRO like GEMA?',
+    faq_a3:           'Membership with PROs (e.g. GEMA) unlocks royalty collection that would otherwise go uncollected — or be absorbed by a publisher. BiRD can help you register, and handles the work submission and tracking for you — work that publishers typically charge 10–30% to do.',
+    faq_q4:           'Is Early Access free?',
+    faq_a4:           'Yes. Early Access is free while we build and refine the product together with the first cohort of artists. Pricing will be announced before the public launch — Early Access members will be the first to know and will receive preferential terms.',
+    faq_q5:           'Which distributors do you support?',
+    faq_a5:           'We\'re really keen to find out which distributors you use so we can offer the widest possible range at launch. We\'re also integrating with label distribution pipelines for artists already signed. If yours isn\'t on the list, tell us when you sign up — we prioritise by demand.',
+    faq_q6:           'What happens after I sign up?',
+    faq_a6:           "You'll get a confirmation straight away. We'll reach out personally to onboard you as part of the first cohort — we'll invite some of you to an interview and keep you updated on development via email.",
+    footer_access:    'Early Access · April 2026',
+  }
+};
 
-<h2>Haftungsausschluss</h2>
+// ─────────────────────────────────────────────
+// LANGUAGE DETECTION & APPLY
+// ─────────────────────────────────────────────
+let currentLang = 'de';
 
-<p><strong>Haftung f&uuml;r Inhalte</strong></p>
-<p>Die Inhalte unserer Seiten wurden mit gr&ouml;&szlig;ter Sorgfalt erstellt. F&uuml;r die Richtigkeit, Vollst&auml;ndigkeit und Aktualit&auml;t der Inhalte k&ouml;nnen wir jedoch keine Gew&auml;hr &uuml;bernehmen. Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs. 1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen.</p>
+function detectLang() {
+  const lang = navigator.language || navigator.userLanguage || '';
+  return lang.toLowerCase().startsWith('de') ? 'de' : 'en';
+}
 
-<p><strong>Haftung f&uuml;r Links</strong></p>
-<p>Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+function applyLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.documentElement.lang = lang;
 
-<p><strong>Urheberrecht</strong></p>
-<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+  // Text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
 
-<hr class="divider">
+  // Placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
 
-<h2>EU-Streitschlichtung</h2>
-<p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" style="color:#0000DB">https://ec.europa.eu/consumers/odr/</a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-<p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  // Active button
+  document.getElementById('btnDE').classList.toggle('active', lang === 'de');
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+}
 
-</div>
+function setLang(lang) {
+  applyLang(lang);
+  localStorage.setItem('BiRD_lang', lang);
+}
 
-<footer>
-  <span>&copy; 2026 BiRD</span>
-  <a href="/datenschutz.html">Datenschutz</a>
-</footer>
+// Init: saved preference → browser lang → de
+const saved = localStorage.getItem('BiRD_lang');
+applyLang(saved || detectLang());
+
+// ─────────────────────────────────────────────
+// FORM HELPERS
+// ─────────────────────────────────────────────
+function toggleOtherDistributor(select) {
+  const other = document.getElementById('distributorOther');
+  const show = select.value === 'other';
+  other.style.display = show ? 'block' : 'none';
+  other.required = show;
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function toggleForm() {
+  const btn = document.getElementById('ctaBtn');
+  const wrap = document.getElementById('formWrap');
+  const isOpen = wrap.classList.contains('open');
+  wrap.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+
+// ─────────────────────────────────────────────
+// AIRTABLE SUBMIT
+// ─────────────────────────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  // ============================================================
+  // WAITLIST SIGNUP — calls our backend, NOT Airtable directly.
+  // API token is safe on the server, never exposed to the browser.
+  // ============================================================
+
+  const form = document.getElementById('waitlistForm');
+  const btn  = form.querySelector('.submit-btn');
+  const data = Object.fromEntries(new FormData(form));
+
+  btn.textContent = currentLang === 'de' ? 'Wird gesendet…' : 'Sending…';
+  btn.disabled = true;
+
+  const fields = {
+    'VORNAME':          data.first_name,
+    'NACHNAME':         data.last_name,
+    'E-MAIL':           data.email,
+    'Artist Name':      data.artist_name,
+    'Label':            data.label || '',
+    'Catalogue Size':   data.catalog_size,
+    'GEMA Status':      data.gema,
+    'Distributor':      data.distributor,
+    'Other Distributor (if selected)': data.distributor === 'other' ? data.distributor_other : '',
+    'Signup Date':      new Date().toISOString().split('T')[0],
+  };
+
+  try {
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields, lang: currentLang }),
+    });
+
+    if (!res.ok) throw new Error(`Server error ${res.status}`);
+
+    form.style.display = 'none';
+    document.getElementById('successMsg').classList.add('visible');
+
+  } catch (err) {
+    console.error(err);
+    btn.textContent = currentLang === 'de' ? 'Fehler — nochmal versuchen' : 'Error — please try again';
+    btn.disabled = false;
+    btn.style.background = '#c00';
+  }
+}
+</script>
 </body>
 </html>
