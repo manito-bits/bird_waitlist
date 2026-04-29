@@ -117,7 +117,7 @@ nav .nav-label { font-size: 11px; letter-spacing: 0.1em; text-transform: upperca
 
 /* ── Form ── */
 .form-wrap { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
-.form-wrap.open { max-height: 900px; }
+.form-wrap.open { max-height: 1200px; }
 .form-inner { border-top: 1px solid rgba(0,0,0,0.1); margin-top: 28px; padding-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; max-width: 820px; }
 .field { display: flex; flex-direction: column; gap: 7px; }
 .field.full { grid-column: 1 / -1; }
@@ -454,11 +454,11 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
 const i18n = {
   de: {
     nav_label:        'Früher Zugang',
-    eyebrow:          'Dein Geld. Dein Katalog. Dein Tool.',
+    eyebrow:          'Dein Geld. Dein Katalog. Dein Recht.',
     headline_1:       'Kein Label.',
     headline_2:       'Kein Stress.',
     body_text:        'Musikschaffende verlieren im Schnitt <strong>über 50% ihrer Einnahmen</strong> an Zwischenmänner — für Arbeit, die heute Software erledigen kann. BiRD liest deine Abrechnungen, prüft sie, erklärt sie — und übernimmt die Verwaltung. <strong>Du behältst deine Rechte.</strong>',
-    cta:              'Frühen Zugang sichern',
+    cta:              'Ich will auf die Warteliste',
     f_firstname:      'Vorname',
     f_firstname_ph:   'Vorname',
     f_lastname:       'Nachname',
@@ -493,7 +493,7 @@ const i18n = {
     success_body:     'Wir melden uns, sobald dein Zugang bereit ist. Bis dahin — mach Mukke.',
     stat_1:           'Einnahmen gehen verloren',
     stat_2:           'Intermediäre pro Auszahlung',
-    stat_3:           'Label. Kein Stress.',
+    stat_3:           'Durchblick deiner Einkünfte',
     faq_title:        'Häufige\nFragen.',
     faq_q1:           'Was macht BiRD genau mit meinen Abrechnungen?',
     faq_a1:           'BiRD liest deine Tantiemen-Abrechnungen von der GEMA, deinem Distributor und anderen Quellen — und gleicht jede Zeile mit deinem Katalog ab. Du siehst genau, woher jeder Euro kommt, ob die Beträge stimmen und was noch aussteht. Keine Tabellen, kein Rätselraten.',
@@ -511,11 +511,11 @@ const i18n = {
   },
   en: {
     nav_label:        'Early Access',
-    eyebrow:          'Your Money. Your Catalogue. Your Tool.',
+    eyebrow:          'Your Money. Your Catalogue. Your Rights.',
     headline_1:       'No Label.',
     headline_2:       'No Stress.',
     body_text:        'Musicians lose on average <strong>over 50% of their earnings</strong> to middlemen — for work that software can handle today. BiRD reads your statements, checks them, explains them — and takes over the admin. <strong>You keep your rights.</strong>',
-    cta:              'Secure Early Access',
+    cta:              'Join the Waitlist',
     f_firstname:      'First Name',
     f_firstname_ph:   'First Name',
     f_lastname:       'Last Name',
@@ -550,7 +550,7 @@ const i18n = {
     success_body:     "We'll be in touch as soon as your access is ready. Until then — make music.",
     stat_1:           'Revenue lost to middlemen',
     stat_2:           'Intermediaries per payout',
-    stat_3:           'Label. No Stress.',
+    stat_3:           'Clarity on your earnings',
     faq_title:        'Common\nQuestions.',
     faq_q1:           'What does BiRD actually do with my statements?',
     faq_a1:           'BiRD reads your royalty statements from GEMA, your distributor, and other sources — then matches every line against your catalogue. You see exactly where each euro comes from, whether the amounts are correct, and what\'s still outstanding. No spreadsheets, no guesswork.',
@@ -639,7 +639,27 @@ function toggleForm() {
   const isOpen = wrap.classList.contains('open');
   wrap.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    setTimeout(() => {
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+  }
 }
+
+// Scroll to submit button when consent checkbox is checked (mobile fix)
+document.addEventListener('DOMContentLoaded', () => {
+  const consent = document.getElementById('dsgvoConsent');
+  if (consent) {
+    consent.addEventListener('change', () => {
+      if (consent.checked) {
+        setTimeout(() => {
+          const submitBtn = document.querySelector('.submit-btn');
+          if (submitBtn) submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    });
+  }
+});
 
 // ─────────────────────────────────────────────
 // AIRTABLE SUBMIT
