@@ -45,9 +45,9 @@ const emailTemplates = {
         <!-- Body -->
         <div style="padding: 36px 36px 20px;">
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Killer, dass du dich angemeldet hast.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir bauen gemeinsam etwas, das allen Artists ihre Rechte zur&uuml;ckgibt &mdash; und daf&uuml;r sorgt, dass dein Geld da landet, wo es hingeh&ouml;rt: bei dir.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir melden uns pers&ouml;nlich bei dir, sobald dein Zugang bereit ist.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Killer, dass du dich angemeldet hast!</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir bauen gemeinsam etwas, das allen Artists Kontrolle &uuml;ber ihre Musik zur&uuml;ckgeben soll &mdash; und daf&uuml;r sorgt, dass dein Geld da landet, wo es hingeh&ouml;rt: Bei dir!</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Wir melden uns pers&ouml;nlich bei dir, sobald der Zugang bereit ist.</p>
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">In der Zwischenzeit &mdash; <strong>mach Mukke.</strong></p>
           <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Dein BiRD Team</p>
         </div>
@@ -82,9 +82,9 @@ const emailTemplates = {
         <!-- Body -->
         <div style="padding: 36px 36px 20px;">
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Amazing that you signed up.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We're building something that gives every artist their rights back &mdash; and makes sure your money ends up where it belongs: with you.</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We'll reach out personally once your access is ready.</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Amazing that you signed up!</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We're building something that gives every artist control over their music back &mdash; and makes sure your money ends up where it belongs: With you!</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">We'll reach out personally once access is ready.</p>
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">Until then &mdash; <strong>make music.</strong></p>
           <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Your BiRD Team</p>
         </div>
