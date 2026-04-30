@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BiRD — Kein Label. Kein Stress.</title>
 
+<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+<!-- Open Graph (WhatsApp, iMessage, LinkedIn, Facebook, Slack) -->
 <meta property="og:title" content="BiRD — Kein Label. Kein Stress.">
 <meta property="og:description" content="Musikschaffende verlieren über 50% ihrer Einnahmen an Zwischenmänner. BiRD übernimmt die Verwaltung — du behältst deine Rechte.">
 <meta property="og:image" content="https://birdandcompany.de/og-image.png">
@@ -16,14 +18,15 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BiRD — Kein Label. Kein Stress.">
 <meta name="twitter:description" content="Musikschaffende verlieren über 50% ihrer Einnahmen an Zwischenmänner. BiRD übernimmt die Verwaltung — du behältst deine Rechte.">
 <meta name="twitter:image" content="https://birdandcompany.de/og-image.png">
 
+<!-- General -->
 <meta name="description" content="BiRD übernimmt die Verwaltung deiner Musikkarriere — du behältst deine Rechte. Kein Label. Kein Stress.">
 <meta name="theme-color" content="#E8E8E8">
-
 <style>
 @font-face {
   font-family: 'StapelExpanded';
@@ -114,7 +117,7 @@ nav .nav-label { font-size: 11px; letter-spacing: 0.1em; text-transform: upperca
 
 /* ── Form ── */
 .form-wrap { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
-.form-wrap.open { max-height: 900px; }
+.form-wrap.open { max-height: 1600px; }
 .form-inner { border-top: 1px solid rgba(0,0,0,0.1); margin-top: 28px; padding-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; max-width: 820px; }
 .field { display: flex; flex-direction: column; gap: 7px; }
 .field.full { grid-column: 1 / -1; }
@@ -164,7 +167,7 @@ nav .nav-label { font-size: 11px; letter-spacing: 0.1em; text-transform: upperca
 .features-cta:hover { background: var(--grey); }
 
 /* ── FAQ ── */
-.faq { background: var(--grey); padding: 80px 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+.faq { background: var(--grey); padding: 80px 40px; }
 .faq-top { margin-bottom: 56px; }
 .faq-headline { font-family: 'StapelExpanded', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 64px); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.92; }
 .faq-list { border-top: 1px solid rgba(0,0,0,0.1); }
@@ -187,8 +190,8 @@ nav .nav-label { font-size: 11px; letter-spacing: 0.1em; text-transform: upperca
 .ysys-btn:hover { background: var(--blue); color: var(--white); }
 
 /* ── Footer ── */
-footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.footer-note { font-size: 11px; color: rgba(0,0,0,0.25); letter-spacing: 0.04em; }
+footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; gap: 0; }
+.footer-note { font-size: 11px; color: rgba(0,0,0,0.25); letter-spacing: 0.04em; flex: 1; text-align: center; }
 .footer-divider { width: 1px; height: 12px; background: rgba(0,0,0,0.1); }
 
 /* ── Responsive ── */
@@ -209,14 +212,19 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
   .ysys { flex-direction: column; align-items: flex-start; gap: 20px; }
   .ysys-tagline { font-size: 16px; }
   .faq-q { font-size: 14px; padding: 22px 0; }
+  .headline { font-size: clamp(32px, 10vw, 44px); }
 }
 </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- Nav -->
   <nav>
     <svg viewBox="0 0 471.59 92.22" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="color:#000;display:block">
+      <!-- =====================================================
+           LOGO: BIRD — edit height in CSS (nav svg { height: })
+           ===================================================== -->
       <rect x="41" width="42.09" height="92.22"/>
       <rect x="24.29" width="14.17" height="92.22"/>
       <rect x="9.85" width="11.9" height="92.22"/>
@@ -236,6 +244,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     </div>
   </nav>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="eyebrow" data-i18n="eyebrow"></div>
     <h1 class="headline">
@@ -321,7 +330,6 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
               <option value="believe">Believe</option>
               <option value="iMusician">iMusician</option>
               <option value="Amuse">Amuse</option>
-              <option value="soundcloud">SoundCloud</option>
               <option value="own label" data-i18n="f_dist_label"></option>
               <option value="none yet" data-i18n="f_dist_none"></option>
               <option value="other" data-i18n="f_other"></option>
@@ -345,6 +353,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     </div>
   </section>
 
+  <!-- Stats strip -->
   <div class="stats">
     <div class="stat">
       <div class="stat-num"><span class="blue">&gt;50%</span></div>
@@ -360,6 +369,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     </div>
   </div>
 
+  <!-- FAQ -->
   <section class="faq">
     <div class="faq-top">
       <h2 class="faq-headline" data-i18n="faq_title"></h2>
@@ -410,6 +420,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     </div>
   </section>
 
+  <!-- YSYS -->
   <div class="ysys">
     <div class="ysys-tagline">
       <span class="hl">Your System.</span>&nbsp;
@@ -424,6 +435,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
     </button>
   </div>
 
+  <!-- Footer -->
   <footer>
     <span class="footer-note">© 2026 BiRD</span>
     <div class="footer-divider"></div>
@@ -442,7 +454,7 @@ footer { padding: 24px 40px; border-top: 1px solid rgba(0,0,0,0.06); display: fl
 // ─────────────────────────────────────────────
 const i18n = {
   de: {
-    nav_label:        'Early Access',
+    nav_label:        'Früher Zugang',
     eyebrow:          'Dein Katalog. Dein Geld.',
     headline_1:       'Kein Label.',
     headline_2:       'Kein Stress.',
@@ -485,18 +497,18 @@ const i18n = {
     stat_3:           'Durchblick deiner Einkünfte',
     faq_title:        'Häufige\nFragen.',
     faq_q1:           'Was macht BiRD genau mit meinen Abrechnungen?',
-    faq_a1:           'BiRD liest deine Abrechnungen von der GEMA, deinem Distributor und weiteren Quellen — und gleicht jede Zeile mit deinem Katalog ab. Du siehst genau, woher jeder Euro kommt, ob die Beträge stimmen und was noch aussteht. Keine Tabellen, kein Kopffick.',
+    faq_a1:           'BiRD liest deine Tantiemen-Abrechnungen von der GEMA, deinem Distributor und anderen Quellen — und gleicht jede Zeile mit deinem Katalog ab. Du siehst genau, woher jeder Euro kommt, ob die Beträge stimmen und was noch aussteht. Keine Tabellen, kein Rätselraten.',
     faq_q2:           'Muss ich Rechte abgeben, um BiRD zu nutzen?',
-    faq_a2:           'Niemals. BiRD handelt ausschließlich auf Basis einer jederzeit widerruflichen Vollmacht — du autorisierst nur die Aktionen die du auch wirklich willst. Zahlungsflüsse laufen weiterhin direkt zwischen den externen Stellen (GEMA, DSPs, Distributoren) und dir. BiRD ist das Tool in der Mitte, keine Vertragspartei.',
-    faq_q3:           'Warum ist es wichtig bei der GEMA angemeldet zu sein?',
-    faq_a3:           'Die Mitgliedschaft bei PROs (z.B. GEMA) eröffnet in den meisten Fällen die Rechteverwertung von Tantiemen, die sonst nicht eingezogen würden — oder beim Verlag landen. BiRD kann dir bei der Anmeldung helfen, übernimmt auch danach die Werkanmeldung sowie das Tracking für dich, wofür Verlage sonst 10–30 % berechnen.',
-    faq_q4:           'Ist der Early-Access kostenlos?',
-    faq_a4:           'Ja. Der Early-Access ist kostenlos, während wir das Produkt gemeinsam mit den ersten Künstlern aufbauen und verfeinern. Die Preise werden vor dem öffentlichen Launch bekanntgegeben — Early-Access-Mitglieder erfahren es zuerst und erhalten Vorzugskonditionen.',
+    faq_a2:           'Niemals. BiRD handelt auf Basis einer widerruflichen Vollmacht — du autorisierst bestimmte Aktionen und kannst jederzeit widerrufen. Zahlungsflüsse laufen weiterhin direkt zwischen den externen Stellen (GEMA, DSPs, Distributoren) und dir. BiRD ist das Tool in der Mitte, keine Vertragspartei.',
+    faq_q3:           'Warum ist es wichtig, bei der GEMA angemeldet zu sein?',
+    faq_a3:           'Die GEMA-Mitgliedschaft erschließt Aufführungs- und Mechanicalvergütungen, die sonst nicht eingezogen werden — oder beim Verlag landen. BiRD kann dir bei der Anmeldung helfen und übernimmt danach die Werkanmeldung und das Tracking, wofür Verlage 10–30 % berechnen.',
+    faq_q4:           'Ist der frühe Zugang kostenlos?',
+    faq_a4:           'Ja. Der frühe Zugang ist kostenlos, während wir das Produkt gemeinsam mit den ersten Künstlern aufbauen und verfeinern. Die Preise werden vor dem öffentlichen Launch bekanntgegeben — Early-Access-Mitglieder erfahren es zuerst und erhalten Vorzugskonditionen.',
     faq_q5:           'Welche Distributoren unterstützt ihr?',
-    faq_a5:           'Für uns ist es super interessant herauszufinden, welche Distributoren ihr nutzt, damit wir zum Launch das breitmöglichste Spektrum anbieten können. Wir integrieren auch Label-Distributionspipelines für bereits unter Vertrag stehende Künstler. Wenn deiner nicht dabei ist, sag es uns bei der Anmeldung — wir priorisieren nach Nachfrage.',
+    faq_a5:           'Zum Launch: DistroKid, TuneCore, CD Baby, AWAL, Believe, iMusician und Amuse. Wir integrieren auch Label-Distributionspipelines für bereits unter Vertrag stehende Künstler. Wenn deiner nicht dabei ist, sag es uns bei der Anmeldung — wir priorisieren nach Nachfrage.',
     faq_q6:           'Was passiert nach der Anmeldung?',
-    faq_a6:           'Du bekommst sofort eine Bestätigung. Wir melden uns persönlich, um dich als Teil des ersten Cohorts einzuführen — ein paar von euch laden wir zu einem Interview ein und halten dich darüber hinaus mit E-Mails über die Entwicklung auf dem Laufenden.',
-    footer_access:    'Early Access · April 2026',
+    faq_a6:           'Du bekommst sofort eine Bestätigung. Wir melden uns persönlich, um dich als Teil des ersten Cohorts einzuführen — ein kurzes Intro-Call, Zugang zum Early Build und ein direkter Draht zum Team. Kein automatisierter Funnel. Nur wir und dein Katalog.',
+    footer_access:    'Früher Zugang · April 2026',
   },
   en: {
     nav_label:        'Early Access',
@@ -504,7 +516,7 @@ const i18n = {
     headline_1:       'No Label.',
     headline_2:       'No Stress.',
     body_text:        'Musicians lose on average <strong>over 50% of their earnings</strong> to middlemen — for work that software can handle today. BiRD reads your statements, checks them, explains them — and takes over the admin. <strong>You keep your rights.</strong>',
-    cta:              'Secure Early Access',
+    cta:              'Join the Waitlist',
     f_firstname:      'First Name',
     f_firstname_ph:   'First Name',
     f_lastname:       'Last Name',
@@ -539,20 +551,20 @@ const i18n = {
     success_body:     "We'll be in touch as soon as your access is ready. Until then — make music.",
     stat_1:           'Revenue lost to middlemen',
     stat_2:           'Intermediaries per payout',
-    stat_3:           'Label. No Stress.',
+    stat_3:           'Clarity on your earnings',
     faq_title:        'Common\nQuestions.',
     faq_q1:           'What does BiRD actually do with my statements?',
-    faq_a1:           'BiRD reads your royalty statements from GEMA, your distributor, and other sources — and matches every line against your catalogue. You see exactly where each euro comes from, whether the amounts are correct, and what\'s still outstanding. No spreadsheets, no bullshit.',
+    faq_a1:           'BiRD reads your royalty statements from GEMA, your distributor, and other sources — then matches every line against your catalogue. You see exactly where each euro comes from, whether the amounts are correct, and what\'s still outstanding. No spreadsheets, no guesswork.',
     faq_q2:           'Do I have to give up any rights to use BiRD?',
-    faq_a2:           'Never. BiRD acts exclusively on the basis of a revocable power of attorney — you only authorise the actions you actually want. All payments flow directly between external parties (GEMA, DSPs, distributors) and you. BiRD is the tool in the middle, not a party to any deal.',
-    faq_q3:           'Why does it matter to be registered with a PRO like GEMA?',
-    faq_a3:           'Membership with PROs (e.g. GEMA) unlocks royalty collection that would otherwise go uncollected — or be absorbed by a publisher. BiRD can help you register, and handles the work submission and tracking for you — work that publishers typically charge 10–30% to do.',
-    faq_q4:           'Is Early Access free?',
-    faq_a4:           'Yes. Early Access is free while we build and refine the product together with the first cohort of artists. Pricing will be announced before the public launch — Early Access members will be the first to know and will receive preferential terms.',
+    faq_a2:           'Never. BiRD acts on a revocable power of attorney — you authorise specific actions and can withdraw at any time. All payments flow directly between external parties (GEMA, DSPs, distributors) and you. BiRD is the tool in the middle, not a party to any deal.',
+    faq_q3:           'Why does it matter if I\'m registered with GEMA?',
+    faq_a3:           'GEMA membership unlocks performance and mechanical royalties that would otherwise go uncollected — or be absorbed by a publisher. BiRD can help you register if you haven\'t yet, and automates the work submission and tracking that publishers charge 10–30% to do manually.',
+    faq_q4:           'Is early access free?',
+    faq_a4:           'Yes. Early access is free while we build and refine the product together with the first cohort of artists. Pricing will be announced before the public launch — early access members will be the first to know and will receive preferential terms.',
     faq_q5:           'Which distributors do you support?',
-    faq_a5:           'We\'re really keen to find out which distributors you use so we can offer the widest possible range at launch. We\'re also integrating with label distribution pipelines for artists already signed. If yours isn\'t on the list, tell us when you sign up — we prioritise by demand.',
+    faq_a5:           'At launch: DistroKid, TuneCore, CD Baby, AWAL, Believe, iMusician, and Amuse. We\'re also integrating with label distribution pipelines for artists already signed. If yours isn\'t on the list, tell us when you sign up — we prioritise by demand.',
     faq_q6:           'What happens after I sign up?',
-    faq_a6:           "You'll get a confirmation straight away. We'll reach out personally to onboard you as part of the first cohort — we'll invite some of you to an interview and keep you updated on development via email.",
+    faq_a6:           "You'll get a confirmation straight away. We'll reach out personally to onboard you as part of the first cohort — a short intro call, access to the early build, and a direct line to the team. No automated funnel. Just us and your catalogue.",
     footer_access:    'Early Access · April 2026',
   }
 };
@@ -605,7 +617,14 @@ function toggleOtherDistributor(select) {
   const other = document.getElementById('distributorOther');
   const show = select.value === 'other';
   other.style.display = show ? 'block' : 'none';
-  other.required = show;
+  if (!show) {
+    other.required = false;
+    other.value = '';
+  } else {
+    other.required = true;
+    other.focus();
+    setTimeout(() => other.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  }
 }
 
 function toggleFaq(btn) {
@@ -621,7 +640,27 @@ function toggleForm() {
   const isOpen = wrap.classList.contains('open');
   wrap.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    setTimeout(() => {
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+  }
 }
+
+// Scroll to submit button when consent checkbox is checked (mobile fix)
+document.addEventListener('DOMContentLoaded', () => {
+  const consent = document.getElementById('dsgvoConsent');
+  if (consent) {
+    consent.addEventListener('change', () => {
+      if (consent.checked) {
+        setTimeout(() => {
+          const submitBtn = document.querySelector('.submit-btn');
+          if (submitBtn) submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    });
+  }
+});
 
 // ─────────────────────────────────────────────
 // AIRTABLE SUBMIT
