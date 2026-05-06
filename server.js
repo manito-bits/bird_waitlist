@@ -33,16 +33,10 @@ const emailTemplates = {
     subject: 'Du bist dabei — BiRD',
     html: `
       <div style="font-family: Helvetica, Arial, sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; background: #ffffff;">
-
-        <!-- Header with logo on grey background -->
         <div style="background: #E8E8E8; padding: 32px 36px; text-align: left;">
           <img src="https://birdandcompany.de/email-logo.png" alt="BiRD" height="28" style="height: 28px; width: auto;">
         </div>
-
-        <!-- Blue accent bar -->
         <div style="height: 3px; background: #0000DB;"></div>
-
-        <!-- Body -->
         <div style="padding: 36px 36px 20px;">
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Killer, dass du dich angemeldet hast!</p>
@@ -51,13 +45,7 @@ const emailTemplates = {
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">In der Zwischenzeit &mdash; <strong>mach Mukke.</strong></p>
           <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Dein BiRD Team</p>
         </div>
-
-        <!-- Signature -->
-        <div style="padding: 0 36px 24px;">
-          ${signature}
-        </div>
-
-        <!-- Footer -->
+        <div style="padding: 0 36px 24px;">${signature}</div>
         <div style="background: #E8E8E8; padding: 16px 36px; font-size: 10px; color: #999; line-height: 1.6;">
           Diese E-Mail wurde automatisch versendet.
           <a href="https://birdandcompany.de/datenschutz.html" style="color: #666; text-decoration: underline;">Datenschutz</a> &middot;
@@ -70,16 +58,10 @@ const emailTemplates = {
     subject: "You're in — BiRD",
     html: `
       <div style="font-family: Helvetica, Arial, sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; background: #ffffff;">
-
-        <!-- Header with logo on grey background -->
         <div style="background: #E8E8E8; padding: 32px 36px; text-align: left;">
           <img src="https://birdandcompany.de/email-logo.png" alt="BiRD" height="28" style="height: 28px; width: auto;">
         </div>
-
-        <!-- Blue accent bar -->
         <div style="height: 3px; background: #0000DB;"></div>
-
-        <!-- Body -->
         <div style="padding: 36px 36px 20px;">
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Hey ${name},</p>
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px;">Amazing that you signed up!</p>
@@ -88,13 +70,7 @@ const emailTemplates = {
           <p style="font-size: 15px; line-height: 1.7; color: #333; margin: 28px 0 16px;">Until then &mdash; <strong>make music.</strong></p>
           <p style="font-size: 14px; line-height: 1.7; color: #999; margin: 28px 0 0;">Your BiRD Team</p>
         </div>
-
-        <!-- Signature -->
-        <div style="padding: 0 36px 24px;">
-          ${signature}
-        </div>
-
-        <!-- Footer -->
+        <div style="padding: 0 36px 24px;">${signature}</div>
         <div style="background: #E8E8E8; padding: 16px 36px; font-size: 10px; color: #999; line-height: 1.6;">
           This email was sent automatically.
           <a href="https://birdandcompany.de/datenschutz.html" style="color: #666; text-decoration: underline;">Privacy</a> &middot;
@@ -107,51 +83,54 @@ const emailTemplates = {
 
 // ── API endpoint: Waitlist signup ──
 app.post('/api/waitlist', async (req, res) => {
-  const { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE } = process.env;
+  const { APPS_SCRIPT_URL } = process.env;
 
-  if (!AIRTABLE_TOKEN) {
-    console.error('AIRTABLE_TOKEN not set');
+  if (!APPS_SCRIPT_URL) {
+    console.error('APPS_SCRIPT_URL not set');
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
   try {
-    // 1. Save to Airtable
-    const response = await fetch(
-      `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ fields: req.body.fields }),
-      }
-    );
+    const f = req.body.fields;
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      console.error('Airtable error:', JSON.stringify(err, null, 2));
-      return res.status(response.status).json({ error: 'Airtable error', details: err });
-    }
+    // 1. Save to Google Sheet via Apps Script
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        row: [
+          f['Artist Name'],
+          f['VORNAME'],
+          f['NACHNAME'],
+          f['E-MAIL'],
+          f['Catalogue Size'],
+          f['GEMA Status'],
+          f['Distributor'],
+          f['Other Distributor (if selected)'] || '',
+          f['Label'] || '',
+          f['Signup Date'],
+        ]
+      }),
+    });
 
-    const data = await response.json();
+    if (!response.ok) throw new Error(`Apps Script error: ${response.status}`);
 
     // 2. Send confirmation email (non-blocking)
     const mailer = getMailer();
-    if (mailer && req.body.fields['E-MAIL']) {
+    if (mailer && f['E-MAIL']) {
       const lang = req.body.lang === 'en' ? 'en' : 'de';
-      const name = req.body.fields['VORNAME'] || 'du';
+      const name = f['VORNAME'] || 'du';
       const template = emailTemplates[lang](name);
 
       mailer.sendMail({
         from: `BiRD <${process.env.GMAIL_USER}>`,
-        to: req.body.fields['E-MAIL'],
+        to: f['E-MAIL'],
         subject: template.subject,
         html: template.html,
       }).catch(err => console.error('Email error (non-blocking):', err.message));
     }
 
-    res.json({ success: true, id: data.id });
+    res.json({ success: true });
   } catch (err) {
     console.error('Server error:', err);
     res.status(500).json({ error: 'Server error' });
