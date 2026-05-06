@@ -21,7 +21,7 @@ const signature = `
   <table cellpadding="0" cellspacing="0" style="width: 100%; max-width: 500px; border-collapse: collapse;">
     <tr>
       <td>
-        <img src="https://birdandcompany.de/email-signature.png" alt="Tristan Kurt — BiRD — hello@birdandcompany.de — birdandcompany.de" width="500" style="width: 100%; max-width: 560px; height: auto; display: block; border: 0;">
+        <img src="https://birdandcompany.de/email-signature.png" alt="Tristan Kurt — BiRD — hello@birdandcompany.de — birdandcompany.de" width="560" style="width: 100%; max-width: 560px; height: auto; display: block; border: 0;">
       </td>
     </tr>
   </table>
